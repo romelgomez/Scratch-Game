@@ -43,7 +43,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
+tasks.named<JavaExec>("run") {
+    args("--config=config.json", "--betting-amount=100")
+}
+
 application {
-    // Define the main class for the application.
-    mainClass = "org.romelgomez.App"
+    mainClass.set("org.romelgomez.ScratchGame") 
 }
