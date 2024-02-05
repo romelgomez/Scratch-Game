@@ -1,4 +1,6 @@
 plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.0" 
+
     // Apply the application plugin to add support for building a CLI application in Java.
     application
 
@@ -44,7 +46,13 @@ java {
 }
 
 tasks.named<JavaExec>("run") {
-    args("--config=config.json", "--betting-amount=100")
+    args("--config", "config.json", "--betting-amount", "100")
+}
+
+tasks.shadowJar {
+    archiveBaseName.set("scratch-game")
+    archiveVersion.set("0.0.1")
+    archiveClassifier.set("")
 }
 
 application {

@@ -11,14 +11,17 @@ public class ScratchGame {
             String configPath = null;
             double betAmount = 0;
 
-            // Parse command-line arguments
+            // Parse command-line arguments where the value follows the flag
             for (int i = 0; i < args.length; i++) {
-                if (args[i].startsWith("--config=")) {
-                    configPath = args[i].substring("--config=".length());
-                } else if (args[i].startsWith("--betting-amount=")) {
-                    betAmount = Double.parseDouble(args[i].substring("--betting-amount=".length()));
+                if ("--config".equals(args[i]) && i + 1 < args.length) {
+                    configPath = args[++i]; // Increment i to get the value following the flag
+                } else if ("--betting-amount".equals(args[i]) && i + 1 < args.length) {
+                    betAmount = Double.parseDouble(args[++i]); // Increment i to get the value following the flag
                 }
             }
+
+            // System.out.println("Config Path: " + configPath);
+            // System.out.println("Betting Amount: " + betAmount);
 
             if (configPath == null || betAmount <= 0) {
                 System.out.println(
