@@ -30,11 +30,9 @@ public class ScratchGame {
 
             MatrixGenerator generator = new MatrixGenerator(config);
             String[][] matrix = generator.generateMatrix();
-            // printMatrix(matrix);
 
             WinningCombinationChecker checker = new WinningCombinationChecker(config);
             Map<String, List<String>> winningCombinations = checker.checkForWinningCombinations(matrix);
-            printWinningCombinations(winningCombinations);
 
             RewardCalculator calculator = new RewardCalculator(config);
             double reward = calculator.calculateReward(winningCombinations, betAmount, matrix);
@@ -78,25 +76,4 @@ public class ScratchGame {
         }
     }
 
-    // private static void printMatrix(String[][] matrix) {
-    //     System.out.println("Generated Matrix:");
-    //     for (String[] row : matrix) {
-    //         for (String cell : row) {
-    //             System.out.print(cell + " "); // Print each cell separated by a space
-    //         }
-    //         System.out.println(); // Move to the next line after each row
-    //     }
-    // }
-
-    private static void printWinningCombinations(Map<String, List<String>> winningCombinations) {
-        if (winningCombinations.isEmpty()) {
-            // System.out.println("No winning combinations found.");
-        } else {
-            // System.out.println("Winning Combinations:");
-            winningCombinations.forEach((symbol, combinations) -> {
-                // System.out.println("Symbol: " + symbol + " has the following winning combinations:");
-                combinations.forEach(combination -> System.out.println("\t- " + combination));
-            });
-        }
-    }
 }
