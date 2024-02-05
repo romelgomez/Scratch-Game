@@ -23,8 +23,8 @@ public class GameConfig {
         @JsonProperty("reward_multiplier")
         public double rewardMultiplier;
         public String type;
-        public double extra; // Optional for bonus symbols
-        public String impact; // Optional for bonus symbols
+        public double extra;
+        public String impact;
     }
 
     public static class Probabilities {
@@ -52,7 +52,6 @@ public class GameConfig {
         public int count;
         public String group;
         @JsonProperty("covered_areas")
-        public List<List<String>> coveredAreas = new ArrayList<>(); // Initialize to empty to avoid null checks
-
+        public List<List<String>> coveredAreas = new ArrayList<>();
     }
 }

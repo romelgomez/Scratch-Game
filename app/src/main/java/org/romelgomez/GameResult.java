@@ -14,7 +14,6 @@ public class GameResult {
     @JsonProperty("applied_bonus_symbol")
     private String appliedBonusSymbol;
 
-    // Constructor
     public GameResult(String[][] matrix, double reward, Map<String, List<String>> appliedWinningCombinations,
             String appliedBonusSymbol) {
         this.matrix = matrix;
@@ -23,7 +22,6 @@ public class GameResult {
         this.appliedBonusSymbol = appliedBonusSymbol;
     }
 
-    // Getters and Setters
     public String[][] getMatrix() {
         return matrix;
     }

@@ -13,14 +13,13 @@ public class RewardCalculator {
     public double calculateReward(Map<String, List<String>> winningCombinations, double betAmount, String[][] matrix) {
         double totalReward = 0;
 
-        // Calculate reward based on winning combinations
         for (Map.Entry<String, List<String>> entry : winningCombinations.entrySet()) {
             String symbol = entry.getKey();
             List<String> combinations = entry.getValue();
 
             GameConfig.SymbolConfig symbolConfig = config.symbols.get(symbol);
             if (symbolConfig == null || "bonus".equals(symbolConfig.type)) {
-                continue; // Skip if it's a bonus symbol or not defined
+                continue;
             }
 
             for (String combination : combinations) {
@@ -31,7 +30,6 @@ public class RewardCalculator {
             }
         }
 
-        // Apply bonus symbols effects
         totalReward = applyBonusEffects(matrix, totalReward);
 
         return totalReward;
@@ -49,7 +47,6 @@ public class RewardCalculator {
                         case "extra_bonus":
                             totalReward += symbolConfig.extra;
                             break;
-                        // Handle other bonus effects if necessary
                     }
                 }
             }

@@ -7,6 +7,6 @@ public class WinningCombinationConfig {
     public String when;
     public int count;
     public String group;
-    public List<String> coveredAreas; // Represented as "row:column"
+    public List<String> coveredAreas;
 
 }

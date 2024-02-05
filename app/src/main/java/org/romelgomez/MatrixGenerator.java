@@ -17,20 +17,17 @@ public class MatrixGenerator {
     public String[][] generateMatrix() {
         String[][] matrix = new String[config.rows][config.columns];
 
-        // Initialize all cells to an empty string to prevent NullPointerException
         for (int i = 0; i < config.rows; i++) {
             for (int j = 0; j < config.columns; j++) {
-                matrix[i][j] = ""; // Initialize each cell to an empty string
+                matrix[i][j] = "";
             }
         }
 
-        // Fill each cell in the matrix based on the standard symbol probabilities
         for (GameConfig.ProbabilityConfig probConfig : config.probabilities.standardSymbols) {
             String symbol = selectSymbol(probConfig.symbols);
             matrix[probConfig.row][probConfig.column] = symbol;
         }
 
-        // Logic to place bonus symbols
         placeBonusSymbols(matrix, config.probabilities.bonusSymbols.symbols);
 
         return matrix;
@@ -53,11 +50,10 @@ public class MatrixGenerator {
 
     private void placeBonusSymbols(String[][] matrix, Map<String, Integer> bonusSymbolProbabilities) {
         if (bonusSymbolProbabilities.isEmpty()) {
-            return; // Skip bonus symbol placement if there are no bonus symbols defined
+            return;
         }
 
-        // Decide on the number of bonus symbols to place
-        int numberOfBonusSymbols = 1; // For simplicity, placing only one bonus symbol, adjust as needed
+        int numberOfBonusSymbols = 1;
 
         List<String> bonusSymbols = new ArrayList<>(bonusSymbolProbabilities.keySet());
 
@@ -66,7 +62,7 @@ public class MatrixGenerator {
             do {
                 row = random.nextInt(config.rows);
                 col = random.nextInt(config.columns);
-            } while (!matrix[row][col].isEmpty()); // Ensure we don't overwrite an existing symbol
+            } while (!matrix[row][col].isEmpty());
 
             String bonusSymbol = bonusSymbols.get(random.nextInt(bonusSymbols.size()));
             matrix[row][col] = bonusSymbol;
